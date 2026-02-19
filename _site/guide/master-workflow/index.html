@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Workflow Guidelines - Master Instructions | Made With Claw</title>
+  <meta name="description" content="Build marketing websites with OpenClaw — a complete guide to 11ty, AWS Amplify, and Route 53.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦀</text></svg>">
+  
+  <!-- Theme color -->
+  <meta name="theme-color" content="#0a0a0f">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Master Workflow Guidelines - Master Instructions | Made With Claw">
+  <meta property="og:description" content="Build marketing websites with OpenClaw — a complete guide to 11ty, AWS Amplify, and Route 53.">
+  <meta property="og:type" content="website">
+  
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="/" class="nav-logo">🐾 Made With Claw</a>
+      <ul class="nav-links">
+        <li><a href="/guide/github-setup/">Guide</a></li>
+        <li><a href="https://github.com/eastsidehealthcare/made-with-claw" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://docs.openclaw.ai" target="_blank" rel="noopener">OpenClaw Docs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    
+<section class="guide">
+  <h1>Master Workflow Guidelines</h1>
+  <p class="lead">Standard development and deployment processes for all eastsidehealthcare websites.</p>
+
+  <h2>Development Workflow</h2>
+  
+  <h3>Branch Strategy</h3>
+  <ul>
+    <li><strong>Always work from a branch</strong> - never push directly to `main`</li>
+    <li><strong>Branch naming:</strong> `feature-description` or `fix-issue-description`</li>
+    <li><strong>Examples:</strong> `update-service-areas-favicon`, `fix-mobile-menu-bug`</li>
+  </ul>
+
+  <h3>Pull Request Process</h3>
+  <ol>
+    <li><strong>Create PR</strong> with descriptive title and detailed description</li>
+    <li><strong>Include Amplify preview link</strong> in PR description
+      <ul>
+        <li>Format: `https://pr-&lt;number&gt;.&lt;app-id&gt;.amplifyapp.com`</li>
+        <li>Example: `https://pr-25.d2q2suquhut472.amplifyapp.com`</li>
+      </ul>
+    </li>
+    <li><strong>Wait for Amplify build</strong> to complete</li>
+    <li><strong>Take screenshots</strong> of preview (automated via screenshot system)</li>
+    <li><strong>Notify stakeholders</strong> only when preview link is ready</li>
+    <li><strong>Merge after approval</strong> - don't wait for extra confirmation</li>
+  </ol>
+
+  <h3>Communication Guidelines</h3>
+  <ul>
+    <li><strong>Concise updates</strong> - what changed, why, result</li>
+    <li><strong>Visual evidence</strong> - screenshots with preview links</li>
+    <li><strong>Proactive</strong> - suggest next steps, don't just wait</li>
+    <li><strong>Timely</strong> - merge quickly after approval (minutes, not hours)</li>
+  </ul>
+
+  <h2>Screenshot Workflow (NEW: 2026-02-19)</h2>
+  
+  <h3>Automated Screenshot System</h3>
+  <ul>
+    <li><strong>Purpose:</strong> Take screenshots of Amplify preview links automatically</li>
+    <li><strong>Technology:</strong> Headless Chrome + puppeteer-core (uses existing Chrome installation)</li>
+    <li><strong>No local browser connection</strong> required - runs on server</li>
+    <li><strong>Integration:</strong> Built into standard PR workflow</li>
+  </ul>
+
+  <h3>Files</h3>
+  <ol>
+    <li>`/take_screenshot.js` - Core screenshot function</li>
+    <li>`/screenshot_workflow.js` - Complete workflow (screenshot + Telegram integration)</li>
+  </ol>
+
+  <h3>Usage</h3>
+  <pre><code>// After Amplify preview is ready:
+const previewUrl = "https://pr-XX.app-id.amplifyapp.com";
+await screenshotAndSend(previewUrl, "PR #XX - Description");
+// Screenshot automatically sent to Telegram</code></pre>
+
+  <h2>Deployment Workflow</h2>
+  
+  <h3>Amplify Deployment</h3>
+  <ul>
+    <li><strong>Automatic builds</strong> on push to `main` branch</li>
+    <li><strong>PR previews</strong> enabled for all pull requests</li>
+    <li><strong>Production URL:</strong> `https://main.&lt;app-id&gt;.amplifyapp.com`</li>
+    <li><strong>Preview URL:</strong> `https://pr-&lt;number&gt;.&lt;app-id&gt;.amplifyapp.com`</li>
+  </ul>
+
+  <h3>Post-Deployment Verification</h3>
+  <ol>
+    <li><strong>Check production site</strong> after merge</li>
+    <li><strong>Verify changes</strong> are live</li>
+    <li><strong>Note cache clearing</strong> for favicon changes</li>
+    <li><strong>Update documentation</strong> if needed</li>
+  </ol>
+
+  <h3>Deployment Timeline Example</h3>
+  <pre><code>8:37 AM: PR created with changes
+8:41 AM: PR #25 merged (squash merge)
+8:44 AM: Amplify build completed
+8:45 AM: Changes live on production</code></pre>
+
+  <h2>Tool Selection Principles</h2>
+  
+  <h3>Prefer Existing Infrastructure</h3>
+  <ul>
+    <li><strong>Use what's already installed</strong> (Chrome, Node.js, etc.)</li>
+    <li><strong>puppeteer-core over full Puppeteer</strong> (uses existing Chrome)</li>
+    <li><strong>Simple solutions</strong> over complex setups (Node script vs Lambda)</li>
+  </ul>
+
+  <h3>Technology Stack</h3>
+  <ul>
+    <li><strong>SSG:</strong> 11ty (Eleventy)</li>
+    <li><strong>Hosting:</strong> AWS Amplify</li>
+    <li><strong>Domain Registration:</strong> AWS Route 53 preferred</li>
+    <li><strong>DNS:</strong> AWS Route 53</li>
+    <li><strong>SSL:</strong> AWS Amplify (auto-provisioned)</li>
+    <li><strong>Template Repo:</strong> `eastsidehealthcare/made-with-claw`</li>
+  </ul>
+
+  <h2>Key Workflow Principles (2026-02-19)</h2>
+  
+  <h3>1. Communication Efficiency</h3>
+  <ul>
+    <li><strong>"Only notify when preview link is ready"</strong> - Don't message about PR creation until preview is live</li>
+    <li><strong>"Show me, don't just tell me"</strong> - Screenshots > descriptions</li>
+    <li><strong>"Fast iteration"</strong> - Quick merges, immediate verification</li>
+  </ul>
+
+  <h3>2. Technical Pragmatism</h3>
+  <ul>
+    <li><strong>"Use what's already working"</strong> - Leverage existing infrastructure</li>
+    <li><strong>"Simple solutions"</strong> - Prefer straightforward approaches</li>
+    <li><strong>"Automate repetitive tasks"</strong> - Screenshots, deployments, etc.</li>
+  </ul>
+
+  <h3>3. Quality Assurance</h3>
+  <ul>
+    <li><strong>"Don't reinterpret my branding"</strong> - Use actual logo files</li>
+    <li><strong>"Healthcare terminology matters"</strong> - "Service Areas" not "Locations"</li>
+    <li><strong>"Test before notifying"</strong> - Verify preview works before sharing</li>
+  </ul>
+
+  <h3>4. Process Optimization</h3>
+  <ul>
+    <li><strong>Batch similar tasks</strong> - Group related changes in single PR</li>
+    <li><strong>Clear acceptance criteria</strong> - Know when work is complete</li>
+    <li><strong>Continuous improvement</strong> - Update workflows based on learnings</li>
+  </ul>
+
+  <h2>Quick Reference Checklist</h2>
+  
+  <h3>Before Creating PR</h3>
+  <ul class="checklist">
+    <li>☐ Changes tested locally</li>
+    <li>☐ Branch created from `main`</li>
+    <li>☐ Descriptive commit messages</li>
+    <li>☐ Documentation updated if needed</li>
+  </ul>
+
+  <h3>PR Creation</h3>
+  <ul class="checklist">
+    <li>☐ Descriptive title and description</li>
+    <li>☐ Amplify preview link included</li>
+    <li>☐ Screenshots taken (automated)</li>
+    <li>☐ Stakeholders notified (only when preview ready)</li>
+  </ul>
+
+  <h3>After Merge</h3>
+  <ul class="checklist">
+    <li>☐ Production site verified</li>
+    <li>☐ Cache clearing noted (if favicon changes)</li>
+    <li>☐ Documentation updated</li>
+    <li>☐ Next steps identified</li>
+  </ul>
+
+  <h2>Full Documentation</h2>
+  <p>For the complete workflow guidelines, see <a href="https://github.com/eastsidehealthcare/master-instructions/blob/main/docs/MASTER-WORKFLOW.md" target="_blank" rel="noopener">MASTER-WORKFLOW.md</a> in the repository.</p>
+
+  <div class="next-step">
+    <a href="/">← Back to Home</a>
+  </div>
+</section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener">11ty</a> and <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a></p>
+    <p>&copy; <a href="https://omegadigital.ai" target="_blank" rel="noopener">Omega Digital Services</a> — <a href="https://github.com/eastsidehealthcare/made-with-claw" target="_blank" rel="noopener">View Source</a></p>
+  </footer>
+</body>
+</html>
