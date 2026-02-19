@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | {{ site.name }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦀</text></svg>">
+  
+  <!-- Theme color -->
+  <meta name="theme-color" content="#0a0a0f">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ title }} | {{ site.name }}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:type" content="website">
+  
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="/" class="nav-logo">🐾 Made With Claw</a>
+      <ul class="nav-links">
+        <li><a href="/guide/github-setup/">Guide</a></li>
+        <li><a href="https://github.com/eastsidehealthcare/made-with-claw" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://docs.openclaw.ai" target="_blank" rel="noopener">OpenClaw Docs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener">11ty</a> and <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a></p>
+    <p>&copy; <a href="https://omegadigital.ai" target="_blank" rel="noopener">Omega Digital Services</a> — <a href="https://github.com/eastsidehealthcare/made-with-claw" target="_blank" rel="noopener">View Source</a></p>
+  </footer>
+</body>
+</html>

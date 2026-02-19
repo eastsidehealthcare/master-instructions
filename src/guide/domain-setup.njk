@@ -1,0 +1,92 @@
+---
+layout: base.njk
+title: Domain Setup - Made With Claw
+---
+
+<section class="guide">
+  <h1>4. Configure Your Domain</h1>
+  <p class="lead">Connect your custom domain to Amplify with automatic SSL.</p>
+
+  <h2>Register a Domain (If Needed)</h2>
+  <p>You can register domains directly through Route 53:</p>
+  <ol>
+    <li>Go to AWS Console → Route 53 → Registered domains</li>
+    <li>Click "Register domain"</li>
+    <li>Search for your desired domain</li>
+    <li>Complete the registration (~$12-15/year for .com)</li>
+  </ol>
+  <p>Route 53 automatically creates a hosted zone for your domain.</p>
+
+  <h2>Connect Domain to Amplify</h2>
+  <p>Tell your assistant:</p>
+  <blockquote>"Connect the domain yourdomain.com to the Amplify app."</blockquote>
+
+  <p>Your assistant will:</p>
+  <ol>
+    <li>Create a domain association in Amplify</li>
+    <li>Get the CloudFront distribution URL</li>
+    <li>Add DNS records to Route 53:
+      <ul>
+        <li>A record (alias) for the root domain</li>
+        <li>CNAME for www subdomain</li>
+        <li>Certificate validation CNAME</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h2>DNS Records Created</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>yourdomain.com</td>
+        <td>A (Alias)</td>
+        <td>d1234abc.cloudfront.net</td>
+      </tr>
+      <tr>
+        <td>www.yourdomain.com</td>
+        <td>CNAME</td>
+        <td>d1234abc.cloudfront.net</td>
+      </tr>
+      <tr>
+        <td>_acm-validation.yourdomain.com</td>
+        <td>CNAME</td>
+        <td>(certificate validation)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>SSL Certificate</h2>
+  <p>Amplify automatically provisions an SSL certificate via AWS Certificate Manager. This usually takes 5-15 minutes.</p>
+
+  <h2>DNS Propagation</h2>
+  <p>After DNS records are added, it can take 5-30 minutes for changes to propagate globally. If you see "DNS_PROBE_FINISHED_NXDOMAIN", wait a few minutes and try again.</p>
+
+  <p>To test immediately, you can:</p>
+  <ul>
+    <li>Use the Amplify URL (always works): <code>https://main.d1234abc.amplifyapp.com</code></li>
+    <li>Check DNS propagation: <code>dig yourdomain.com @8.8.8.8</code></li>
+  </ul>
+
+  <h2>Verify It's Working</h2>
+  <p>Ask your assistant:</p>
+  <blockquote>"Check the domain status for yourdomain.com"</blockquote>
+
+  <p>Status progression:</p>
+  <ol>
+    <li><strong>CREATING</strong> — Setting up the association</li>
+    <li><strong>PENDING_VERIFICATION</strong> — Waiting for SSL certificate</li>
+    <li><strong>PENDING_DEPLOYMENT</strong> — Deploying to CloudFront</li>
+    <li><strong>AVAILABLE</strong> — Live and working!</li>
+  </ol>
+
+  <div class="next-step">
+    <a href="/guide/seo-guidelines/">Next: Apply SEO Guidelines →</a>
+  </div>
+</section>

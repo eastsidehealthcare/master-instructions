@@ -1,0 +1,84 @@
+---
+layout: base.njk
+title: AWS Amplify Setup - Made With Claw
+---
+
+<section class="guide">
+  <h1>3. Connect AWS Amplify</h1>
+  <p class="lead">Set up hosting with automatic deployments on every git push.</p>
+
+  <h2>Why Amplify?</h2>
+  <ul>
+    <li><strong>Auto-deploy:</strong> Push to GitHub → site updates automatically</li>
+    <li><strong>PR Previews:</strong> Every pull request gets its own preview URL</li>
+    <li><strong>Free SSL:</strong> HTTPS certificates auto-provisioned</li>
+    <li><strong>Global CDN:</strong> Fast load times worldwide via CloudFront</li>
+    <li><strong>Simple pricing:</strong> Free tier covers most small sites</li>
+  </ul>
+
+  <h2>Prerequisites</h2>
+  <ol>
+    <li>An AWS account</li>
+    <li>AWS CLI installed on your OpenClaw server</li>
+    <li>IAM user with Amplify permissions</li>
+  </ol>
+
+  <h2>Set Up AWS Credentials</h2>
+  
+  <h3>Create an IAM User</h3>
+  <ol>
+    <li>Go to AWS Console → IAM → Users → Create user</li>
+    <li>Name it something like <code>openclaw-bot</code></li>
+    <li>Attach these policies:
+      <ul>
+        <li><code>AdministratorAccess-Amplify</code></li>
+        <li><code>AmazonRoute53FullAccess</code> (for DNS setup later)</li>
+      </ul>
+    </li>
+    <li>Create an access key (CLI use case)</li>
+  </ol>
+
+  <h3>Configure AWS CLI</h3>
+  <p>On your server, run:</p>
+  <pre><code>aws configure</code></pre>
+  <p>Enter your Access Key ID and Secret Access Key when prompted.</p>
+
+  <p>Tell your assistant:</p>
+  <blockquote>"I've configured AWS credentials. Please verify they work."</blockquote>
+
+  <h2>Create the Amplify App</h2>
+
+  <h3>Option A: Let Your Assistant Do It (Recommended)</h3>
+  <p>Provide a GitHub personal access token with <code>repo</code> and <code>admin:repo_hook</code> scopes.</p>
+  
+  <p>Set it as an environment variable on your server:</p>
+  <pre><code>export GITHUB_TOKEN="ghp_your_token_here"</code></pre>
+  
+  <p>Add to <code>~/.bashrc</code> to persist across sessions.</p>
+
+  <p>Then tell your assistant:</p>
+  <blockquote>"Create an Amplify app for my repo. The GitHub token is set in the GITHUB_TOKEN environment variable."</blockquote>
+
+  <h3>Option B: Use the AWS Console</h3>
+  <ol>
+    <li>Go to AWS Amplify Console</li>
+    <li>Click "New app" → "Host web app"</li>
+    <li>Select GitHub and authorize</li>
+    <li>Choose your repository and branch</li>
+    <li>Amplify auto-detects the build settings from <code>amplify.yml</code></li>
+    <li>Deploy!</li>
+  </ol>
+
+  <h2>Verify Deployment</h2>
+  <p>After setup, your assistant will provide:</p>
+  <ul>
+    <li><strong>App ID:</strong> Used for future CLI commands</li>
+    <li><strong>Amplify URL:</strong> Something like <code>https://main.d1234abc.amplifyapp.com</code></li>
+  </ul>
+
+  <p>Visit the URL to confirm your site is live!</p>
+
+  <div class="next-step">
+    <a href="/guide/domain-setup/">Next: Configure Your Domain →</a>
+  </div>
+</section>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Setup - Made With Claw | Made With Claw</title>
+  <meta name="description" content="Build marketing websites with OpenClaw — a complete guide to 11ty, AWS Amplify, and Route 53.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦀</text></svg>">
+  
+  <!-- Theme color -->
+  <meta name="theme-color" content="#0a0a0f">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="GitHub Setup - Made With Claw | Made With Claw">
+  <meta property="og:description" content="Build marketing websites with OpenClaw — a complete guide to 11ty, AWS Amplify, and Route 53.">
+  <meta property="og:type" content="website">
+  
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="/" class="nav-logo">🐾 Made With Claw</a>
+      <ul class="nav-links">
+        <li><a href="/guide/github-setup/">Guide</a></li>
+        <li><a href="https://github.com/eastsidehealthcare/made-with-claw" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://docs.openclaw.ai" target="_blank" rel="noopener">OpenClaw Docs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    
+<section class="guide">
+  <h1>2. Set Up GitHub Access</h1>
+  <p class="lead">Give your OpenClaw assistant secure access to push code to your repository.</p>
+
+  <h2>Why SSH Keys?</h2>
+  <p>SSH keys let your assistant interact with GitHub without storing passwords or tokens in chat. It's more secure and only needs to be set up once per server.</p>
+
+  <h2>What to Tell Your Assistant</h2>
+  <blockquote>
+    "Generate an SSH key for GitHub access."
+  </blockquote>
+
+  <p>Your assistant will:</p>
+  <ol>
+    <li>Generate an SSH key pair on the server</li>
+    <li>Show you the public key</li>
+  </ol>
+
+  <h2>Add the Key to GitHub</h2>
+  <ol>
+    <li>Go to <a href="https://github.com/settings/keys" target="_blank" rel="noopener">GitHub → Settings → SSH and GPG keys</a></li>
+    <li>Click <strong>New SSH key</strong></li>
+    <li>Paste the public key your assistant provided</li>
+    <li>Give it a name like "OpenClaw Server"</li>
+    <li>Click <strong>Add SSH key</strong></li>
+  </ol>
+
+  <p>Tell your assistant:</p>
+  <blockquote>"I've added the SSH key to GitHub. My repo is at https://github.com/your-org/your-repo.git"</blockquote>
+
+  <h2>Verify Access</h2>
+  <p>Your assistant will test the connection by cloning your repository. If successful, they can now push code, create branches, and manage your site.</p>
+
+  <h2>Already Have SSH Set Up?</h2>
+  <p>If you've already configured SSH keys for your OpenClaw server, just tell your assistant where your repo is:</p>
+  <blockquote>"I've cloned the Made With Claw template to https://github.com/your-org/your-repo.git — please clone it and verify access."</blockquote>
+
+  <div class="next-step">
+    <a href="/guide/amplify-setup/">Next: Connect AWS Amplify →</a>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener">11ty</a> and <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a></p>
+    <p>&copy; <a href="https://omegadigital.ai" target="_blank" rel="noopener">Omega Digital Services</a> — <a href="https://github.com/eastsidehealthcare/made-with-claw" target="_blank" rel="noopener">View Source</a></p>
+  </footer>
+</body>
+</html>

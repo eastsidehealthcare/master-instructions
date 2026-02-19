@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AWS Amplify Setup - Made With Claw | Made With Claw</title>
+  <meta name="description" content="Build marketing websites with OpenClaw — a complete guide to 11ty, AWS Amplify, and Route 53.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦀</text></svg>">
+  
+  <!-- Theme color -->
+  <meta name="theme-color" content="#0a0a0f">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="AWS Amplify Setup - Made With Claw | Made With Claw">
+  <meta property="og:description" content="Build marketing websites with OpenClaw — a complete guide to 11ty, AWS Amplify, and Route 53.">
+  <meta property="og:type" content="website">
+  
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="/" class="nav-logo">🐾 Made With Claw</a>
+      <ul class="nav-links">
+        <li><a href="/guide/github-setup/">Guide</a></li>
+        <li><a href="https://github.com/eastsidehealthcare/made-with-claw" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://docs.openclaw.ai" target="_blank" rel="noopener">OpenClaw Docs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    
+<section class="guide">
+  <h1>3. Connect AWS Amplify</h1>
+  <p class="lead">Set up hosting with automatic deployments on every git push.</p>
+
+  <h2>Why Amplify?</h2>
+  <ul>
+    <li><strong>Auto-deploy:</strong> Push to GitHub → site updates automatically</li>
+    <li><strong>PR Previews:</strong> Every pull request gets its own preview URL</li>
+    <li><strong>Free SSL:</strong> HTTPS certificates auto-provisioned</li>
+    <li><strong>Global CDN:</strong> Fast load times worldwide via CloudFront</li>
+    <li><strong>Simple pricing:</strong> Free tier covers most small sites</li>
+  </ul>
+
+  <h2>Prerequisites</h2>
+  <ol>
+    <li>An AWS account</li>
+    <li>AWS CLI installed on your OpenClaw server</li>
+    <li>IAM user with Amplify permissions</li>
+  </ol>
+
+  <h2>Set Up AWS Credentials</h2>
+  
+  <h3>Create an IAM User</h3>
+  <ol>
+    <li>Go to AWS Console → IAM → Users → Create user</li>
+    <li>Name it something like <code>openclaw-bot</code></li>
+    <li>Attach these policies:
+      <ul>
+        <li><code>AdministratorAccess-Amplify</code></li>
+        <li><code>AmazonRoute53FullAccess</code> (for DNS setup later)</li>
+      </ul>
+    </li>
+    <li>Create an access key (CLI use case)</li>
+  </ol>
+
+  <h3>Configure AWS CLI</h3>
+  <p>On your server, run:</p>
+  <pre><code>aws configure</code></pre>
+  <p>Enter your Access Key ID and Secret Access Key when prompted.</p>
+
+  <p>Tell your assistant:</p>
+  <blockquote>"I've configured AWS credentials. Please verify they work."</blockquote>
+
+  <h2>Create the Amplify App</h2>
+
+  <h3>Option A: Let Your Assistant Do It (Recommended)</h3>
+  <p>Provide a GitHub personal access token with <code>repo</code> and <code>admin:repo_hook</code> scopes.</p>
+  
+  <p>Set it as an environment variable on your server:</p>
+  <pre><code>export GITHUB_TOKEN="ghp_your_token_here"</code></pre>
+  
+  <p>Add to <code>~/.bashrc</code> to persist across sessions.</p>
+
+  <p>Then tell your assistant:</p>
+  <blockquote>"Create an Amplify app for my repo. The GitHub token is set in the GITHUB_TOKEN environment variable."</blockquote>
+
+  <h3>Option B: Use the AWS Console</h3>
+  <ol>
+    <li>Go to AWS Amplify Console</li>
+    <li>Click "New app" → "Host web app"</li>
+    <li>Select GitHub and authorize</li>
+    <li>Choose your repository and branch</li>
+    <li>Amplify auto-detects the build settings from <code>amplify.yml</code></li>
+    <li>Deploy!</li>
+  </ol>
+
+  <h2>Verify Deployment</h2>
+  <p>After setup, your assistant will provide:</p>
+  <ul>
+    <li><strong>App ID:</strong> Used for future CLI commands</li>
+    <li><strong>Amplify URL:</strong> Something like <code>https://main.d1234abc.amplifyapp.com</code></li>
+  </ul>
+
+  <p>Visit the URL to confirm your site is live!</p>
+
+  <div class="next-step">
+    <a href="/guide/domain-setup/">Next: Configure Your Domain →</a>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener">11ty</a> and <a href="https://openclaw.ai" target="_blank" rel="noopener">OpenClaw</a></p>
+    <p>&copy; <a href="https://omegadigital.ai" target="_blank" rel="noopener">Omega Digital Services</a> — <a href="https://github.com/eastsidehealthcare/made-with-claw" target="_blank" rel="noopener">View Source</a></p>
+  </footer>
+</body>
+</html>

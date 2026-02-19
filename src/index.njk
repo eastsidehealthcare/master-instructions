@@ -1,0 +1,237 @@
+---
+layout: base.njk
+title: Master Instructions - SEO, UI & Workflow Guidelines
+description: Central repository for SEO, UI, and workflow guidelines used across all eastsidehealthcare websites.
+---
+
+<section class="hero">
+  <h1>Master Instructions Repository</h1>
+  <p class="lead">Central source of truth for SEO, UI, and workflow guidelines across all eastsidehealthcare websites.</p>
+  <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+    <a href="#guidelines" class="btn btn-primary">View Guidelines →</a>
+    <a href="https://github.com/eastsidehealthcare/master-instructions" class="btn btn-secondary" target="_blank" rel="noopener">View on GitHub</a>
+  </div>
+</section>
+
+<section class="overview" id="guidelines">
+  <h2>Guidelines</h2>
+  <p>All projects should reference these master guidelines rather than maintaining local copies.</p>
+  
+  <div class="benefits">
+    <div class="benefit">
+      <div class="benefit-icon">🔍</div>
+      <h3>SEO Guidelines</h3>
+      <p>Standard SEO checklist for all marketing websites. Apply these to every site we build.</p>
+      <a href="/guide/seo-guidelines/" class="btn btn-small">View Guide →</a>
+      <a href="https://github.com/eastsidehealthcare/master-instructions/blob/main/docs/SEO-GUIDELINES.md" class="btn btn-small btn-secondary" target="_blank" rel="noopener">Raw Markdown</a>
+    </div>
+    
+    <div class="benefit">
+      <div class="benefit-icon">🎨</div>
+      <h3>UI Guidelines</h3>
+      <p>User interface design best practices including healthcare-specific navigation, animations, and mobile touch targets.</p>
+      <a href="/guide/ui-guidelines/" class="btn btn-small">View Guide →</a>
+      <a href="https://github.com/eastsidehealthcare/master-instructions/blob/main/docs/UI-GUIDELINES.md" class="btn btn-small btn-secondary" target="_blank" rel="noopener">Raw Markdown</a>
+    </div>
+    
+    <div class="benefit">
+      <div class="benefit-icon">⚡</div>
+      <h3>Workflow Guidelines</h3>
+      <p>Development and deployment processes including PR workflow, screenshot automation, and tool selection principles.</p>
+      <a href="/guide/master-workflow/" class="btn btn-small">View Guide →</a>
+      <a href="https://github.com/eastsidehealthcare/master-instructions/blob/main/docs/MASTER-WORKFLOW.md" class="btn btn-small btn-secondary" target="_blank" rel="noopener">Raw Markdown</a>
+    </div>
+  </div>
+</section>
+
+<section class="overview">
+  <h2>Purpose</h2>
+  <p>This repository serves as the single source of truth for all eastsidehealthcare website development guidelines. Instead of maintaining duplicate documentation across multiple repositories, all projects reference these master guidelines.</p>
+  
+  <div class="benefits">
+    <div class="benefit">
+      <div class="benefit-icon">📚</div>
+      <h3>Centralized Documentation</h3>
+      <p>One place for all guidelines. Updates propagate to all projects automatically when they reference these master files.</p>
+    </div>
+    
+    <div class="benefit">
+      <div class="benefit-icon">🔄</div>
+      <h3>Consistent Standards</h3>
+      <p>Ensure all websites follow the same SEO, UI, and workflow standards. No more inconsistent implementations across projects.</p>
+    </div>
+    
+    <div class="benefit">
+      <div class="benefit-icon">⚡</div>
+      <h3>Fast Updates</h3>
+      <p>When guidelines change, update them once here instead of in multiple repositories. All projects benefit immediately.</p>
+    </div>
+  </div>
+</section>
+
+<section class="overview">
+  <h2>Usage</h2>
+  <p>All projects should reference these guidelines rather than maintaining local copies.</p>
+  
+  <div class="stack-overview">
+    <h3>In Your Project README or Docs</h3>
+    <pre><code>## Development Guidelines
+
+Refer to the master instructions repository for:
+- [SEO Guidelines](https://github.com/eastsidehealthcare/master-instructions/blob/main/docs/SEO-GUIDELINES.md)
+- [UI Guidelines](https://github.com/eastsidehealthcare/master-instructions/blob/main/docs/UI-GUIDELINES.md)  
+- [Workflow Guidelines](https://github.com/eastsidehealthcare/master-instructions/blob/main/docs/MASTER-WORKFLOW.md)</code></pre>
+    
+    <h3>Structure</h3>
+    <pre><code>master-instructions/
+├── docs/                    # Raw markdown guidelines
+│   ├── SEO-GUIDELINES.md
+│   ├── UI-GUIDELINES.md
+│   └── MASTER-WORKFLOW.md
+├── src/                    # 11ty website source
+│   ├── guide/             # Web pages for each guideline
+│   └── _includes/         # Layouts and partials
+└── _site/                 # Built static site</code></pre>
+  </div>
+</section>
+
+<section class="overview">
+  <h2>Related Repositories</h2>
+  <p>These repositories should reference the master instructions instead of maintaining local guideline copies.</p>
+  
+  <div class="use-cases">
+    <div class="use-case">
+      <h4>🏥 made-with-claw</h4>
+      <p>11ty template repository. Should remove local SEO/UI guidelines and link to master instructions.</p>
+      <a href="https://github.com/eastsidehealthcare/made-with-claw" target="_blank" rel="noopener">View Repository →</a>
+    </div>
+    <div class="use-case">
+      <h4>💼 seattle-nurse-delegation</h4>
+      <p>Healthcare website implementation. Should remove local guidelines and link to master instructions.</p>
+      <a href="https://github.com/eastsidehealthcare/seattle-nurse-delegation" target="_blank" rel="noopener">View Repository →</a>
+    </div>
+    <div class="use-case">
+      <h4>🏠 seattle-assisted-living-network</h4>
+      <p>Healthcare website implementation. Should reference master instructions for guidelines.</p>
+      <a href="https://github.com/eastsidehealthcare/seattle-assisted-living-network" target="_blank" rel="noopener">View Repository →</a>
+    </div>
+    <div class="use-case">
+      <h4>📦 Future Projects</h4>
+      <p>All new projects should clone from made-with-claw and reference master instructions for guidelines.</p>
+    </div>
+  </div>
+</section>
+
+<section class="overview">
+  <h2>Frequently Asked Questions</h2>
+  <p>Common questions about the master instructions repository.</p>
+  
+  <div class="faq">
+    <div class="faq-item">
+      <h3>Why create a separate repository for guidelines?</h3>
+      <p>Centralizing guidelines ensures consistency across all projects. When we update SEO requirements or UI patterns, we only need to update them once in the master repository instead of in every project repository. This prevents inconsistencies and makes maintenance much easier.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>How do projects reference these guidelines?</h3>
+      <p>Projects should include links to the master instructions in their README or documentation. They should NOT maintain local copies of SEO-GUIDELINES.md or UI-GUIDELINES.md files. Instead, they should link to the master versions in this repository.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>What if a project needs project-specific guidelines?</h3>
+      <p>Project-specific guidelines can be maintained in the project repository, but they should complement (not duplicate) the master guidelines. For example, a project might have specific brand colors or content guidelines, but should still reference the master SEO and UI guidelines for foundational principles.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>How are updates to guidelines communicated?</h3>
+      <p>When guidelines are updated in the master repository, projects should be notified via GitHub issues or pull requests. The workflow guidelines include processes for updating project documentation when master guidelines change.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>Can I contribute to the guidelines?</h3>
+      <p>Yes! The master instructions repository is open for contributions. Submit pull requests with improvements, and they'll be reviewed and merged. This ensures guidelines evolve based on real-world experience across all projects.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3>What about the 11ty website for these guidelines?</h3>
+      <p>This repository includes an 11ty website that renders the guidelines as formatted web pages. The website is automatically deployed to AWS Amplify when changes are pushed to the main branch. You can view the live site at the Amplify URL.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Ready to Update Your Projects?</h2>
+  <p>To update existing projects to reference master instructions:</p>
+  <blockquote>"Remove local SEO/UI guideline files and add links to master instructions in your project documentation."</blockquote>
+  <p class="text-muted" style="margin-top: var(--space-4); font-size: var(--font-size-sm);">Your OpenClaw assistant can help update project documentation to reference these master guidelines.</p>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Master Instructions",
+  "description": "Central repository for SEO, UI, and workflow guidelines used across all eastsidehealthcare websites.",
+  "url": "https://github.com/eastsidehealthcare/master-instructions",
+  "sameAs": [
+    "https://github.com/eastsidehealthcare/master-instructions"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why create a separate repository for guidelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Centralizing guidelines ensures consistency across all projects. When we update SEO requirements or UI patterns, we only need to update them once in the master repository instead of in every project repository. This prevents inconsistencies and makes maintenance much easier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do projects reference these guidelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Projects should include links to the master instructions in their README or documentation. They should NOT maintain local copies of SEO-GUIDELINES.md or UI-GUIDELINES.md files. Instead, they should link to the master versions in this repository."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if a project needs project-specific guidelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Project-specific guidelines can be maintained in the project repository, but they should complement (not duplicate) the master guidelines. For example, a project might have specific brand colors or content guidelines, but should still reference the master SEO and UI guidelines for foundational principles."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are updates to guidelines communicated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When guidelines are updated in the master repository, projects should be notified via GitHub issues or pull requests. The workflow guidelines include processes for updating project documentation when master guidelines change."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I contribute to the guidelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! The master instructions repository is open for contributions. Submit pull requests with improvements, and they'll be reviewed and merged. This ensures guidelines evolve based on real-world experience across all projects."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about the 11ty website for these guidelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This repository includes an 11ty website that renders the guidelines as formatted web pages. The website is automatically deployed to AWS Amplify when changes are pushed to the main branch. You can view the live site at the Amplify URL."
+      }
+    }
+  ]
+}
+</script>

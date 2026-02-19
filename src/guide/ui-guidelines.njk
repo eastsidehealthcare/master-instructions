@@ -1,0 +1,146 @@
+---
+layout: base.njk
+title: UI Guidelines - Master Instructions
+---
+
+<section class="guide">
+  <h1>UI Guidelines</h1>
+  <p class="lead">User interface design best practices for all eastsidehealthcare websites.</p>
+
+  <h2>Navigation & Terminology</h2>
+  
+  <h3>Healthcare Site Navigation</h3>
+  <ul>
+    <li><strong>Use "Service Areas" NOT "Locations"</strong> for healthcare websites</li>
+    <li>Dropdown items remain city names (Seattle, Bellevue, Kirkland, etc.)</li>
+    <li>Footer should match header terminology (both "Service Areas")</li>
+  </ul>
+
+  <h3>Visual Design</h3>
+  <ul>
+    <li><strong>Light purple hover background</strong> (#e9d5ff) for healthcare sites</li>
+    <li><strong>Adequate padding</strong> in dropdown menus (not cramped)</li>
+    <li><strong>Smooth transitions</strong> with fade-in animations</li>
+    <li><strong>Consistent spacing</strong> between menu items</li>
+  </ul>
+
+  <h3>Favicon Standards</h3>
+  <ul>
+    <li><strong>Use actual logo</strong> (resized) NOT reinterpreted symbols</li>
+    <li><strong>Maintain aspect ratio</strong> - don't force square if logo isn't square</li>
+    <li><strong>White background</strong> for light-themed sites</li>
+    <li><strong>PNG only</strong> (remove SVG references if SVG would reinterpret logo)</li>
+    <li><strong>Multiple sizes:</strong> 16x16, 32x32, 180x180 (apple-touch-icon)</li>
+  </ul>
+
+  <h2>Animations</h2>
+  
+  <h3>When to Use Animation</h3>
+  <p><strong>Do use animations for:</strong></p>
+  <ul>
+    <li>Visual feedback on user interactions (button hover/click states)</li>
+    <li>Guiding attention to calls-to-action</li>
+    <li>Smooth transitions between states (accordion open/close, modal appear)</li>
+    <li>Scroll-triggered content reveals (subtle fade-in, once per element)</li>
+    <li>Loading states and progress indicators</li>
+  </ul>
+
+  <p><strong>Don't use animations for:</strong></p>
+  <ul>
+    <li>Gratuitous decoration without purpose</li>
+    <li>Looping/infinite animations that distract</li>
+    <li>Delayed content that makes users wait</li>
+    <li>Every element on page load (overwhelming)</li>
+    <li>Critical content that users need immediately</li>
+  </ul>
+
+  <h3>Performance Rules</h3>
+  <p><strong>Only animate these CSS properties</strong> (GPU-accelerated, no layout impact):</p>
+  <pre><code>transform (translate, scale, rotate)
+opacity</code></pre>
+
+  <p><strong>Never animate these properties</strong> (triggers expensive layout/paint):</p>
+  <pre><code>width, height
+margin, padding
+top, left, right, bottom
+font-size
+border-width</code></pre>
+
+  <h3>Timing Guidelines</h3>
+  <ul>
+    <li><strong>Micro-interactions</strong> (hover, click): 100-200ms</li>
+    <li><strong>Transitions</strong> (page elements): 200-300ms</li>
+    <li><strong>Larger movements</strong> (modals, slides): 300-500ms</li>
+    <li>Never exceed 500ms — users perceive delays beyond this</li>
+  </ul>
+
+  <h2>Mobile Touch Targets</h2>
+  
+  <h3>Minimum Touch Target Sizes</h3>
+  <ul>
+    <li><strong>Minimum size:</strong> 48x48px (Google's recommendation)</li>
+    <li><strong>Comfortable size:</strong> 48-56px height, full available width</li>
+    <li><strong>Spacing between targets:</strong> At least 8px to prevent mis-taps</li>
+  </ul>
+
+  <h3>Mobile Navigation Implementation</h3>
+  <pre><code>/* Mobile menu with proper touch targets */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 0;  /* Remove gap - let padding handle spacing */
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 16px 24px;
+    margin-left: -24px;
+    margin-right: -24px;
+    width: calc(100% + 48px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav-links a:active {
+    background: var(--color-bg-secondary);  /* Visual feedback on tap */
+  }
+}</code></pre>
+
+  <h2>Key UI Principles (2026-02-19)</h2>
+  
+  <h3>1. Brand Integrity</h3>
+  <ul>
+    <li><strong>Don't reinterpret branding</strong> - Use actual logo files, don't create new symbols</li>
+    <li><strong>Maintain visual consistency</strong> - Colors, spacing, typography should match brand identity</li>
+  </ul>
+
+  <h3>2. Healthcare-Specific Design</h3>
+  <ul>
+    <li><strong>Professional yet approachable</strong> - Healthcare sites need to balance authority with warmth</li>
+    <li><strong>Clear information hierarchy</strong> - Patients need to find information quickly</li>
+    <li><strong>Accessibility first</strong> - Healthcare audiences include elderly and disabled users</li>
+  </ul>
+
+  <h3>3. Practical Implementation</h3>
+  <ul>
+    <li><strong>Use existing infrastructure</strong> - Leverage what's already working (Chrome, puppeteer-core, etc.)</li>
+    <li><strong>Simple solutions</strong> - Prefer straightforward CSS/JS over complex libraries</li>
+    <li><strong>Performance matters</strong> - Every design decision affects Core Web Vitals</li>
+  </ul>
+
+  <h3>4. User-Centric Design</h3>
+  <ul>
+    <li><strong>"Show me, don't just tell me"</strong> - Screenshots > descriptions for communication</li>
+    <li><strong>Fast iteration</strong> - Quick merges, immediate verification</li>
+    <li><strong>Feedback loops</strong> - Regular testing and adjustment based on real usage</li>
+  </ul>
+
+  <h2>Full Documentation</h2>
+  <p>For the complete UI guidelines, see <a href="https://github.com/eastsidehealthcare/master-instructions/blob/main/docs/UI-GUIDELINES.md" target="_blank" rel="noopener">UI-GUIDELINES.md</a> in the repository.</p>
+
+  <div class="next-step">
+    <a href="/">← Back to Home</a>
+  </div>
+</section>
