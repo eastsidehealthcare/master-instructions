@@ -53,17 +53,17 @@ Every page targets ONE primary keyword (or phrase). Define this before writing.
 
 ## 3. Meta Descriptions
 
-- **Length:** 150-160 characters
+- **Length:** 150-160 characters.  DO NOT EXCEED 160 CHARS.
 - **Rules:**
   - Unique for every page
   - Include primary keyword naturally
-  - Include a call-to-action
+  - Include a call-to-action with a phone number.
   - Accurately describe page content
   - Write for humans, not bots
 
 **Example:**
 ```
-Need an emergency dentist in Austin? Eastside Dental offers same-day appointments and 24/7 care. Call now or book online.
+Need an emergency dentist in Austin? Eastside Dental offers same-day appointments. Call now at 555-123-1234 or book online.
 ```
 
 ---
